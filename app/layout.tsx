@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -20,13 +21,13 @@ export const metadata: Metadata = {
     icon: [
       {
         media: "(prefers-color-scheme: light",
-        url: "/logo.webp",
-        href: "/logo.webp",
+        url: "/logo.png",
+        href: "/logo.png",
       },
       {
         media: "(prefers-color-scheme: dark",
-        url: "/logo_dark.webp",
-        href: "/logo_dark.webp",
+        url: "/logo_dark.png",
+        href: "/logo_dark.png",
       }
     ]
   }
@@ -38,11 +39,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+          storageKey="dark_theme"
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
