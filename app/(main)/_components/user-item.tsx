@@ -58,10 +58,7 @@ export const UserItem = () => {
                             <p className="text-sm line-clamp-1">
                                 {user?.fullName}&apos;s NoteFlow
                             </p>
-
                         </div>
-
-
                     </div>
                 </div>
                 <DropdownMenuSeparator />
