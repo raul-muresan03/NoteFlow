@@ -1,7 +1,7 @@
 "use cient"
 
 import { cn } from "@/lib/utils"
-import { ChevronsLeft, MenuIcon, PlusCircle, Search, Settings } from "lucide-react"
+import { ChevronsLeft, MenuIcon, Plus, PlusCircle, Search, Settings, Trash } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { ElementRef, useEffect, useRef, useState } from "react"
 import { useMediaQuery } from "usehooks-ts"
@@ -11,24 +11,30 @@ import { api } from "@/convex/_generated/api"
 import { Item } from "./item"
 import { toast } from "sonner"
 import { DocumentList } from "./document-list"
+import {
+    Popover,
+    PopoverTrigger,
+    PopoverContent
+} from "@/components/ui/popover"
+import { TrashBox } from "./trash-box"
 
 export const Navigation = () => {
-    const isMobile = useMediaQuery("(max-width: 768px)");
-    const pathname = usePathname();
+    const isMobile = useMediaQuery("(max-width: 768px)");       //foloseste hook-ul useMediaQuery pentru a verifica daca ecranul este mai mic de 768px
+    const pathname = usePathname();     //calea curenta
     const create = useMutation(api.documents.create);
 
-    const isResizingRef = useRef(false);
-    const sidebarRef = useRef<ElementRef<"aside">>(null);
+    const isResizingRef = useRef(false);    //foloseste hook-ul useRef pentru a crea o referinta la un obiect care contine o valoare booleana 
+    const sidebarRef = useRef<ElementRef<"aside">>(null);   //foloseste hook-ul useRef pentru a crea o referinta la un obiect de tip aside
     const navbarRef = useRef<ElementRef<"div">>(null);
     const [isResetting, setIsResetting] = useState(false);
     const [isCollapsed, setIsCollapsed] = useState(isMobile);
 
-    useEffect(() => {
-        if (isMobile) {
+    useEffect(() => {       //foloseste hook-ul useEffect pentru a face un efect secundar
+        if (isMobile) {     //daca ecranul este mai mic de 768px, apeleaza functia collapse
             collapse();
         }
-        else {
-            resetWidth();
+        else {      //
+            resetWidth();    //altfel, apeleaza functia resetWidth
         }
     }, [isMobile]);
 
@@ -38,7 +44,7 @@ export const Navigation = () => {
         }
     }, [pathname, isMobile]);
 
-    const handleMouseDown = (
+    const handleMouseDown = (   //functie care se ocupa de evenimentul de mousedown pentru a redimensiona meniul
         event: React.MouseEvent<HTMLDivElement, MouseEvent>
     ) => {
         event.preventDefault();
@@ -49,7 +55,7 @@ export const Navigation = () => {
         document.addEventListener("mouseup", handleMouseUp);
     };
 
-    const handleMouseMove = (event: MouseEvent) => {
+    const handleMouseMove = (event: MouseEvent) => {    //functie care se ocupa de evenimentul de mousemove pentru a redimensiona meniul
         if (!isResizingRef.current) return;
         let newWidth = event.clientX;
 
@@ -63,13 +69,13 @@ export const Navigation = () => {
         }
     };
 
-    const handleMouseUp = () => {
+    const handleMouseUp = () => {     //functie care se ocupa de evenimentul de mouseup pentru a opri redimensionarea meniului
         isResizingRef.current = false;
         document.removeEventListener("mousemove", handleMouseMove);
         document.removeEventListener("mouseup", handleMouseUp);
     }
 
-    const resetWidth = () => {
+    const resetWidth = () => {     //functie care reseteaza latimea meniului
         if (sidebarRef.current && navbarRef.current) {
             setIsCollapsed(false);
             setIsResetting(true);
@@ -87,7 +93,7 @@ export const Navigation = () => {
         }
     };
 
-    const collapse = () => {
+    const collapse = () => {        //functie care face collapse la meniu
         if (sidebarRef.current && navbarRef.current) {
             setIsCollapsed(true);
             setIsResetting(true);
@@ -100,7 +106,7 @@ export const Navigation = () => {
         }
     }
 
-    const handleCreate = () => {
+    const handleCreate = () => {    //functie care se ocupa de crearea unui nou document
         const promise = create({ title: "Untitled" });
 
         toast.promise(promise, {
@@ -113,12 +119,12 @@ export const Navigation = () => {
 
     return (
         <>
-            <aside
+            <aside      //meniul de navigare
                 ref={sidebarRef}
                 className={cn(
                     "group/sidebar h0full bg-secondary overflow-y-auto relative flex w-60 flex-col z-[99999]",
                     isResetting && "transition-all ease-in-out duration-300",
-                    isMobile && "w-0"
+                    isMobile && "w-0"       //daca ecranul este mai mic de 768px, latimea meniului este 0
                 )}
             >
                 <div
@@ -133,27 +139,43 @@ export const Navigation = () => {
                 </div>
                 <div>
                     <UserItem />
-                    <Item
+                    <Item           //buton search
                         label="Search"
                         icon={Search}
                         isSearch
                         onClick={() => { }}
 
                     />
-                    <Item
+                    <Item           //buton settings
                         label="Settings"
                         icon={Settings}
                         onClick={() => { }}
 
                     />
-                    <Item
+                    <Item           //buton new page
                         onClick={handleCreate}
                         label="New page"
                         icon={PlusCircle}
                     />
                 </div>
                 <div className="mt-4">
-                    <DocumentList />
+                    <DocumentList /> 
+                    <Item
+                        onClick={handleCreate}
+                        icon={Plus}
+                        label="Add a page"
+                    />
+                    <Popover>
+                        <PopoverTrigger className="w-full mt-4">
+                            <Item label="Trash" icon={Trash} />
+                        </PopoverTrigger>
+                        <PopoverContent
+                            className="p-0 w-72"
+                            side={isMobile ? "bottom" : "right"}
+                        >
+                        <TrashBox />
+                        </PopoverContent>
+                    </Popover>
                 </div>
                 <div
                     onMouseDown={handleMouseDown}

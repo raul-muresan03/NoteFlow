@@ -1,0 +1,71 @@
+[33mcommit 594032e858ccad8a8281412e5d422a265bcd0c8e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: raul <raulmuresancalin@gmail.com>
+Date:   Tue Jan 7 08:59:32 2025 +0200
+
+    Add archive functionality and dropdown menu for document items
+
+[33mcommit 0034284643f2a194066527411e25edf1a97d6893[m
+Author: raul <raulmuresancalin@gmail.com>
+Date:   Mon Nov 18 03:27:25 2024 +0200
+
+    Added the document list with an option to create a new child note for the parent
+
+[33mcommit 41d9631ae092628a8705af02601951ad8b188c22[m
+Author: raul <raulmuresancalin@gmail.com>
+Date:   Sun Nov 17 13:41:02 2024 +0200
+
+    Added buttons for settings and search on the sidebar
+
+[33mcommit 0708ae0b00d3ae48aa718133804cd3f2b4a168f7[m
+Author: raul <raulmuresancalin@gmail.com>
+Date:   Sun Nov 17 12:59:43 2024 +0200
+
+    Added functions for creating and displaying the notes in the sidebar
+
+[33mcommit 6c05d2a23779632eb9883af0e9c3180c5548dc2f[m
+Author: raul <raulmuresancalin@gmail.com>
+Date:   Fri Nov 15 17:38:29 2024 +0200
+
+    Added user options for the sidebar
+
+[33mcommit 30a18f0b18d229180e1695148b7050408df14b04[m
+Author: raul <raulmuresancalin@gmail.com>
+Date:   Mon Nov 11 02:11:19 2024 +0200
+
+    Finished the sidebar
+
+[33mcommit 0d59c0d3f78b734c49e73729ba03d5600c7c04ab[m
+Author: raul <raulmuresancalin@gmail.com>
+Date:   Sun Nov 3 23:05:51 2024 +0200
+
+    I worked on sidebar
+
+[33mcommit 05c08d3ada3840ad22ec0ebb58b9d43ec09c67d7[m
+Author: raul <raulmuresancalin@gmail.com>
+Date:   Sat Nov 2 20:21:14 2024 +0200
+
+    Added Auth and configured Convex
+
+[33mcommit db196ae5b33d63905eb36e6499532ab8b4582b0d[m
+Author: raul <raulmuresancalin@gmail.com>
+Date:   Sat Nov 2 01:25:12 2024 +0200
+
+    I finished the landing page and the dark mode
+
+[33mcommit ce63ec1af45af6fc6b4def980113600f965e2849[m
+Author: raul <raulmuresancalin@gmail.com>
+Date:   Tue Oct 29 10:50:46 2024 +0200
+
+    I worked on the Landing Page
+
+[33mcommit 8bfaf4acdad31c6bf68c1ae5732be18b52476797[m
+Author: raul <raulmuresancalin@gmail.com>
+Date:   Mon Oct 28 23:35:30 2024 +0200
+
+    Added a button
+
+[33mcommit c61b9d57096db373e0aece4ea75e213395bb34b2[m
+Author: raul <raulmuresancalin@gmail.com>
+Date:   Mon Oct 28 22:57:06 2024 +0200
+
+    Initial commit from Create Next App
