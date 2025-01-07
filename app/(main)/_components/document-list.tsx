@@ -39,7 +39,7 @@ export const DocumentList = ({
     console.log("Documents fetched:", documents);
 
     const onRedirect = (documentId: string) => {
-        router.push(`/documents/${documentId}`);
+        router.push(`/documents/${documentId}`);                //ca sa adauge la string-ul de adresa a browser-ului(pentru a naviga spre alta pagina)
     };
 
     if (!documents) {

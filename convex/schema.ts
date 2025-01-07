@@ -1,4 +1,4 @@
-import { defineSchema, defineTable } from "convex/server";
+import { defineSchema, defineTable } from "convex/server";             //in schema.ts descriem baza de date, cu toate coloanele ei 
 import { v } from "convex/values";
 
 export default defineSchema({
@@ -12,7 +12,7 @@ export default defineSchema({
         icon: v.optional(v.string()),
         isPublished: v.boolean(),
     })
-    .index("by_user", ["userId"])
+    .index("by_user", ["userId"])                                     //pentru cautare mai rapida, dupa userID dar si printr-o combinatie de userID si parentDocument
     .index("by_user_parent", ["userId", "parentDocument"])
 
 });

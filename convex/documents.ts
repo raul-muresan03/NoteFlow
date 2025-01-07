@@ -1,13 +1,64 @@
 import { v } from "convex/values";
 
-import { mutation, query } from "./_generated/server";
+import { mutation, query } from "./_generated/server";          //mutation este pentru a create, modify si delete, iar query este doar pentru obtine date
 import { Doc, Id } from "./_generated/dataModel";
 
-export const getSidebar = query({
+export const archive = mutation({
+    args: { id: v.id("documents") },     //id-ul notitei pe care vrem sa il arhivam
+    handler: async (ctx, args) => {
+        const identity = await ctx.auth.getUserIdentity();
+
+        if (!identity) {
+            throw new Error("Not authenticated");    //verificam daca suntem logati
+        }
+
+        const userId = identity.subject;
+
+        const existingDocument = await ctx.db.get(args.id);     //obtinem notita pe care vrem sa o modificam  
+
+        if (!existingDocument) {
+            throw new Error("Not found");
+        }
+
+        if (existingDocument.userId !== userId) {   //daca userID nu este egal cu id-ul userului care vrea sa faca modificarea notitei
+            throw new Error("Unauthorized");       //aruncam o eroare
+        }
+
+        //functie pentru arhivarea tuturor copiilor notitei arhivate
+        const recursiveArchive = async (documentID: Id<"documents">) => {
+            const children = await ctx.db
+                .query("documents")
+                .withIndex("by_user_parent", (q) => (
+                    q
+                        .eq("userId", userId)
+                        .eq("parentDocument", documentID)
+                ))
+                .collect();
+
+            for (const child of children) {
+                await ctx.db.patch(child._id, {
+                    isArchived: true,          //arhivam toti copiii
+                });
+                await recursiveArchive(child._id);      //verificam daca nu cumva copiii nu au si ei copii la randul lor
+            }
+        }
+
+        const document = await ctx.db.patch(args.id, {        //cu patch urmat de id, modificam datele acelei notite
+            isArchived: true,           //si o arhivam
+        })
+ 
+        recursiveArchive(args.id)
+
+        return document;
+
+    }
+})
+
+export const getSidebar = query({               //query este pentru a obtine documentele pentru sidebar
     args: {
         parentDocument: v.optional(v.id("documents"))
     },
-    handler: async (ctx, args) => {
+    handler: async (ctx, args) => {             //handler este logica care se va executa atunci când funcția este apelată
         const identity = await ctx.auth.getUserIdentity();
 
         if (!identity) {
@@ -29,12 +80,12 @@ export const getSidebar = query({
             .order("desc")
             .collect();
 
-            return documents;
+        return documents;
 
     },
 });
 
-export const create = mutation({
+export const create = mutation({                  //pentru a crea un document
     args: {
         title: v.string(),
         parentDocument: v.optional(v.id("documents"))

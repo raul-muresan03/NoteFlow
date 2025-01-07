@@ -12,14 +12,14 @@ export const Heroes = () => {
                         alt="hero"
                     />
 
-<Image
+                    <Image
                         src="/dark_hero.png"
                         fill
                         className="object-contain hidden dark:block"
                         alt="hero"
                     />
                 </div>
-                
+
             </div>
         </div>
     )
