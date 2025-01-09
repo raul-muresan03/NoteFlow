@@ -16,9 +16,12 @@ import {
     PopoverTrigger,
     PopoverContent
 } from "@/components/ui/popover"
+
+import { useSearch } from "@/hooks/use-search"
 import { TrashBox } from "./trash-box"
 
 export const Navigation = () => {
+    const search = useSearch();     //foloseste hook-ul useSearch pentru a cauta in documente
     const isMobile = useMediaQuery("(max-width: 768px)");       //foloseste hook-ul useMediaQuery pentru a verifica daca ecranul este mai mic de 768px
     const pathname = usePathname();     //calea curenta
     const create = useMutation(api.documents.create);
@@ -143,7 +146,7 @@ export const Navigation = () => {
                         label="Search"
                         icon={Search}
                         isSearch
-                        onClick={() => { }}
+                        onClick={search.onOpen}
 
                     />
                     <Item           //buton settings

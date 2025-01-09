@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 import { FileIcon } from "lucide-react";
 
 interface DocumentListProps {     //interfata care descrie structura unui obiect
-    parentDocumentId: Id<"documents">;
+    parentDocumentId?: Id<"documents">;
     level?: number;
 }
 
