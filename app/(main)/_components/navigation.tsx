@@ -18,10 +18,12 @@ import {
 } from "@/components/ui/popover"
 
 import { useSearch } from "@/hooks/use-search"
+import { useSettings } from "@/hooks/use-settings"
 import { TrashBox } from "./trash-box"
 
 export const Navigation = () => {
     const search = useSearch();     //foloseste hook-ul useSearch pentru a cauta in documente
+    const settings = useSettings();
     const isMobile = useMediaQuery("(max-width: 768px)");       //foloseste hook-ul useMediaQuery pentru a verifica daca ecranul este mai mic de 768px
     const pathname = usePathname();     //calea curenta
     const create = useMutation(api.documents.create);
@@ -152,7 +154,7 @@ export const Navigation = () => {
                     <Item           //buton settings
                         label="Settings"
                         icon={Settings}
-                        onClick={() => { }}
+                        onClick={settings.onOpen}
 
                     />
                     <Item           //buton new page
@@ -162,7 +164,7 @@ export const Navigation = () => {
                     />
                 </div>
                 <div className="mt-4">
-                    <DocumentList /> 
+                    <DocumentList />
                     <Item
                         onClick={handleCreate}
                         icon={Plus}
@@ -176,7 +178,7 @@ export const Navigation = () => {
                             className="p-0 w-72"
                             side={isMobile ? "bottom" : "right"}
                         >
-                        <TrashBox />
+                            <TrashBox />
                         </PopoverContent>
                     </Popover>
                 </div>
