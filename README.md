@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
 ## Getting Started
 
 First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## About NoteFlow
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+NoteFlow is a modern note organizer app, similar to Notion, but with a strong focus on collaboration and personalization. It allows users to create and manage pages of notes, increasing productivity. 
+![image](https://github.com/user-attachments/assets/4fe43ccd-f365-425b-a4b9-6b430c1024e3)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Main features:
+- **Create and organize notes**: allows users to create structured notes, add text and organize them efficiently in a tree structure.
+- ![image](https://github.com/user-attachments/assets/80408a73-29ad-481a-9172-926292d09713)
 
-## Learn More
+- **Simple and intuitive interface**: The app's design is user-friendly and accessible, focusing on a fluid experience.
+- **Efficient archiving system**: Notes can be quickly saved and accessed, providing a simple solution for organizing personal information.
 
-To learn more about Next.js, take a look at the following resources:
+## Technologies used:
+- **React** for the user interface
+- **Convex** for data management
+- **Tailwind CSS** for application styling
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Installation
+Clone the repository:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+git clone https://github.com/username/NoteFlow.git
+```
+Install the dependencies:
 
-## Deploy on Vercel
+```bash
+npm install
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Run the application:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm start
+```
