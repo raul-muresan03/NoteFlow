@@ -11,13 +11,11 @@ import { useEffect, useRef } from "react";
 interface EditorProps {
     onChange: (value: string) => void;
     initialContent?: string;
-    editable?: boolean;
 }
 
 export const Editor = ({
     onChange,
     initialContent,
-    editable
 }: EditorProps) => {
     const { resolvedTheme } = useTheme();
     const editorRef = useRef<HTMLDivElement>(null);
