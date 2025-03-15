@@ -27,7 +27,7 @@ NoteFlow is a modern note organizer app, similar to Notion, but with a strong fo
 Clone the repository:
 
 ```bash
-git clone https://github.com/username/NoteFlow.git
+git clone git@github.com:raul-muresan03/NoteFlow.git
 ```
 Install the dependencies:
 
