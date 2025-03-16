@@ -10,7 +10,7 @@ import { Editor } from "@/components/editor";
 
 interface DocumentIdPageProps {
     params: {
-        documentId: Id<"documents">;   //documentId este numele folderului (ca o variabila)
+        documentId: string;   //documentId este numele folderului (ca o variabila)
     }
 }
 
@@ -18,14 +18,17 @@ const DocumentIdPage = ({
     params
 }: DocumentIdPageProps) => {
 
+    const documentId = params.documentId as Id<"documents">;
+
     const document = useQuery(api.documents.getById, {
-        documentId: params.documentId
+        documentId
     });
+
 
     const update = useMutation(api.documents.update);
     const onChange = (content: string) => {
         update({
-            id: params.documentId,
+            id: documentId,
             content
         });
     };
