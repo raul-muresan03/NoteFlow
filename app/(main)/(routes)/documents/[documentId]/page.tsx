@@ -1,4 +1,5 @@
-"use client";
+"use client";;
+import { use } from "react";
 
 import { useMutation, useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
@@ -8,11 +9,12 @@ import { Cover } from "@/components/cover";
 import { Editor } from "@/components/editor";
 
 interface DocumentIdPageProps {
-  params: { documentId: string };
-  searchParams?: { [key: string]: string | string[] };
+  params: Promise<{ documentId: string }>;
+  searchParams?: Promise<{ [key: string]: string | string[] }>;
 }
 
-const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
+const DocumentIdPage = (props: DocumentIdPageProps) => {
+  const params = use(props.params);
   const documentId = params.documentId as Id<"documents">;
 
   const document = useQuery(api.documents.getById, { documentId });
