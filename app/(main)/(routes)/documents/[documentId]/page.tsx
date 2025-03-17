@@ -7,18 +7,19 @@ import { Toolbar } from "@/components/toolbar";
 import { Cover } from "@/components/cover";
 import { Editor } from "@/components/editor";
 
-
 interface DocumentIdPageProps {
     params: {
-        documentId: string;   //documentId este numele folderului (ca o variabila)
-    }
+        documentId: string;
+    };
+    searchParams?: Record<string, string | string[] | undefined>;
 }
+
 
 const DocumentIdPage = ({
     params
 }: DocumentIdPageProps) => {
 
-    const documentId = params.documentId as Id<"documents">;
+    const documentId = params.documentId as unknown as Id<"documents">;
 
     const document = useQuery(api.documents.getById, {
         documentId
