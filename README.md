@@ -1,10 +1,5 @@
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-```
+## Official Link:
+https://note-flow-beryl.vercel.app/
 
 ## About NoteFlow
 
