@@ -8,7 +8,7 @@ NoteFlow is a modern note organizer app, similar to Notion, but with a strong fo
 
 ## Main features:
 - **Create and organize notes**: allows users to create structured notes, add text and organize them efficiently in a tree structure.
-- ![image](https://github.com/user-attachments/assets/80408a73-29ad-481a-9172-926292d09713)
+  ![image](https://github.com/user-attachments/assets/80408a73-29ad-481a-9172-926292d09713)
 
 - **Simple and intuitive interface**: The app's design is user-friendly and accessible, focusing on a fluid experience.
 - **Efficient archiving system**: Notes can be quickly saved and accessed, providing a simple solution for organizing personal information.
