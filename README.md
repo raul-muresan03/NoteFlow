@@ -13,25 +13,7 @@ NoteFlow is a modern note organizer app, similar to Notion, but with a strong fo
 - **Simple and intuitive interface**: The app's design is user-friendly and accessible, focusing on a fluid experience.
 - **Efficient archiving system**: Notes can be quickly saved and accessed, providing a simple solution for organizing personal information.
 
-## Technologies used:
+## Tech Stack:
 - **React** for the user interface
 - **Convex** for data management
 - **Tailwind CSS** for application styling
-
-## Installation
-Clone the repository:
-
-```bash
-git clone git@github.com:raul-muresan03/NoteFlow.git
-```
-Install the dependencies:
-
-```bash
-npm install
-```
-
-Run the application:
-
-```bash
-npm start
-```
